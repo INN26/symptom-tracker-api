@@ -123,6 +123,14 @@ After successfully fetching the trend in which symptoms occur from the database,
 ```
 [
     {
+        "date": "2025-03-29",
+        "count": 1
+    },
+    {
+        "date": "2025-03-31",
+        "count": 3
+    },
+    {
         "date": "2025-04-01",
         "count": 2
     },
@@ -133,4 +141,25 @@ After successfully fetching the trend in which symptoms occur from the database,
 ]
 ```
 
+To read the daily trend in which a user logs one particular symptom, the user reading the trend needs to be logged in and authorized to read the data. Then this user sends a GET request with the symptom parameter to the route: 
 
+```
+http://localhost:8000/api/symptoms/trends/?symptom=headache
+```
+
+After successfully fetching the trend in which one defined symptom occurs in, from the database, the route will return a daily count of that symptom, for the authorized user linked to that symptom, in a list, as follows:
+
+```
+[
+    {
+        "date": "2025-03-31",
+        "count": 2
+    },
+    {
+        "date": "2025-04-02",
+        "count": 1
+    }
+]
+```
+
+Happy Surfing!
