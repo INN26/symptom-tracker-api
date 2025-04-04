@@ -2,53 +2,6 @@
 
 ## To test the API routes, use an application like POSTMAN or cURL
 
-### Users App Routes
-
-To register a user, use a POST request to the route:
-
-``` bash
-http://localhost:8000/api/register/
-```
-
-This route accepts form data with the format:
-
-> *email*, *name*, *password*, *role*
-
-After successful registration the route will return:
-
-``` python
-{
-"id":1,
-"email":"Entered Email",
-"name":"Entered Name",
-"role":"Entered Role"
-}
-```
-
-To login we need use a POST request to the route:
-
-``` bash
-http://localhost:8000/api/login/
-```
-
-This route accepts form data with the format:
-
-> *email* and *password*
-
-After successfully logging in, the route will return:
-
-``` python
-{
-    "message": "Login successful",
-    "user": {
-        "id": 4,
-        "email": "user@email.com",
-        "name": "John Doe",
-        "role": "patient"
-    }
-}
-```
-
 ### Symptoms App Routes
 
 To enter a new symptom a user needs to be logged in. This user then sends a POST request to the route:
@@ -59,7 +12,7 @@ http://localhost:8000/api/symptoms/
 
 This route takes in form data with the format:
 
-> **symptom_type** and **severity** *(symptom severity, e.g mild)*
+> _**symptom_type**_ and _**severity**_ _*(symptom severity, e.g mild)*_
 
 After successfully writing the symptom in the database, the route will return:
 
@@ -155,54 +108,6 @@ After successfully fetching the trend in which one defined symptom occurs in, fr
     {
         "date": "2025-04-02",
         "count": 1
-    }
-]
-```
-
-### Notications App Routes
-
-To add a notification or reminder for a user, make a POST request to the route:
-
-``` bash
-http://localhost:8000/api/notifications/
-```
-
-This route accepts form data with the format:
-
-> *message*
-
-After successfully logging a reminder the route will return:
-
-``` python
-{
-    "id": 2,
-    "user": 5,
-    "message": "It is time to log your symptoms!",
-    "sent_at": "2025-04-04T08:49:00.738757Z"
-}
-```
-
-To view a user's logged notifications, make a *GET* request to the route:
-
-``` bash
-http://localhost:8000/api/notifications/list/
-```
-
-This route will return all the system reminders linked to a user in a list, as follows:
-
-``` bash
-[
-    {
-        "id": 1,
-        "user": 5,
-        "message": "\"It is time to log your symptoms\"",
-        "sent_at": "2025-04-04T08:43:56.281474Z"
-    },
-    {
-        "id": 2,
-        "user": 5,
-        "message": "It is time to log your symptoms!",
-        "sent_at": "2025-04-04T08:49:00.738757Z"
     }
 ]
 ```
