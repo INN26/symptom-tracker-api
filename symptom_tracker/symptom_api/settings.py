@@ -75,7 +75,7 @@ ROOT_URLCONF = 'symptom_api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'symptom_api', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
