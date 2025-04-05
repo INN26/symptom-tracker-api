@@ -17,14 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.http import JsonResponse
 
+def home_view(request):
+    return JsonResponse({'message': 'Welcome to the Symptom Tracker API'})
 
 urlpatterns = [
-    path('api/', include('users.urls')),  
+    path('', home_view, name='home'),  
+    path('api/', include('users.urls')),
     path('api/auth/', include('rest_framework.urls')),
     path('api/symptoms/', include('symptoms.urls')),
     path('api/notifications/', include('notifications.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
 ]
