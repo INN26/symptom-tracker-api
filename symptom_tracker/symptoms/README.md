@@ -10,7 +10,7 @@ To enter a new symptom a user needs to be logged in. This user then sends a POST
 http://localhost:8000/api/symptoms/
 ```
 
-This route takes in form data with the format:
+This route takes in raw data with the format:
 
 > _**symptom_type**_ and _**severity**_ _*(symptom severity, e.g mild)*_
 
@@ -32,7 +32,7 @@ To read a user's stored symptoms, the user reading the data needs to be logged i
 http://localhost:8000/api/symptoms/
 ```
 
-This request does not require any form data.
+This request does not require any raw data.
 
 After successfully getting the symptoms from the database, this route will return all the symptoms linked a user in a list, as follows:
 
@@ -60,6 +60,29 @@ After successfully getting the symptoms from the database, this route will retur
         "severity": "Mild"
     }
 ]
+```
+```
+
+To Retrieve all symptoms for authenticated user, the user reading the data needs to be logged in and authorized to read the data. This user then sends a GET request to the route:
+
+``` bash
+http://localhost:8000/api/symptoms/{id}/
+
+```
+
+```
+
+To update a symptom for authenticated user, the user needs to be logged in and authorized to read the data. This user then sends a PUT request to the route:
+
+``` bash
+http://localhost:8000/api/symptoms/{id}/
+```
+```
+
+To Delete a specific symptom for authenticated user, the usera needs to be logged in and authorized to read the data. This user then sends a Delete request to the route:
+
+``` bash
+http://localhost:8000/api/symptoms/{id}/
 ```
 
 To read the daily trend in which a user logs their symptoms, the user reading the trend needs to be logged in and authorized to read the data. Then this user sends a GET request to the route:
